@@ -4,11 +4,6 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
 ---
 
 ### Reflection
@@ -34,21 +29,18 @@ In order to draw a single line on the left and right lanes, I modified the draw_
        through the point calculated in step 3.
     5.)Draw a line through (x pt calculated in step 2, image y dimension) and
                             (x pt calculated in step 4, y pt calculated in step 3)
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
-
 
 ###2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+My pipeline is optimized for the provided images. It may not work as well if the camera were to moved to a different position on the car or at a different pointing angle. 
 
-Another shortcoming could be ...
+It clearly also doesn't take into account non-nominal conditions such as reduced visibility or a lot of traffic on the road (especially if the traffic were a bunch of white big rig trucks!). 
 
+I would also be interested in knowing if my region of interest mask would hold up if the car were in the middle lane instead of the far right or far left. I think it may, but it is something I'd like to test.
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+The first improvement I would make is to smooth the lines in between frames. Looking at the videos, the length of the line varies from frame to frame and it would be good to apply a filter so there aren't sharp jumps at times. 
 
-Another potential improvement could be to ...
+Though I think my pipeline fairs decently well in the challenge video but there are clearly areas of improvement. I would need to exclude the hood of the car from my region of interest and also look into the occasional lines that reach across the image instead of more or less up and down the image. Perhaps the filtering between frames would help with that.
